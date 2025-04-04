@@ -4,6 +4,13 @@ from models.website import Website
 from services.pdf_reader import PDFDocument
 import logging
 
+# Cấu hình logging
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler()]
+)
+
 logger = logging.getLogger(__name__)
 
 def summarize(content):
@@ -19,13 +26,16 @@ def summarize(content):
             content = PDFDocument(content)
             source_type = "document"
         else:
+            logger.error("Đầu vào không hợp lệ")
             raise ValueError("Đầu vào không hợp lệ: cần URL hoặc file PDF")
 
         # Tạo prompt
+        logger.debug("Tạo prompt cho mô hình")
         prompt = (
             f"Extract the main content from the {source_type} titled '{content.title}'. "
             "Ignore navigation menus, footers, ads, and sidebars if any. "
-            "Summarize the essential information, including news or announcements, in markdown format.\n\n"
+            "Summarize the essential information, including news, announcements, tables, and mathematical formulas, in markdown format. "
+            "For tables, present them in markdown table syntax. For formulas, use LaTeX notation where applicable.\n\n"
             f"{content.text}"
         )
 
