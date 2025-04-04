@@ -60,7 +60,7 @@ pip install -r requirements.txt
 ### 4. Cấu hình biến môi trường
 Tạo một file `.env` trong thư mục gốc của dự án và thêm API key của bạn:
 ```
-LLAMA_CLOUD_API_KEY=<YOUR_API_KEY>
+LLAMA_API_KEY=<YOUR_API_KEY>
 ```
 - Thay `<YOUR_API_KEY>` bằng khóa API thực tế từ Llama Cloud.
 - File `.env` sẽ được tự động đọc bởi `python-dotenv` khi ứng dụng khởi chạy.

@@ -2,7 +2,6 @@ import streamlit as st
 from services.summarizer import summarize
 import logging
 
-# Cấu hình logging
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -19,7 +18,6 @@ def run_summary(content, content_type: str, spinner_text: str):
     logger.debug("Hiển thị kết quả tóm tắt trên giao diện")
     st.markdown(summary)
 
-# Giao diện chính
 logger.debug("Khởi tạo giao diện Streamlit")
 st.title("Website & PDF Summary App")
 st.markdown("Tóm tắt nội dung từ URL hoặc file PDF bằng Ollama API.")

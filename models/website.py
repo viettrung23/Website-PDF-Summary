@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import logging
 
-# Cấu hình logging
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',

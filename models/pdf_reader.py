@@ -4,7 +4,6 @@ import logging
 import tempfile
 import os
 
-# Cấu hình logging
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',

@@ -16,4 +16,4 @@ SYSTEM_PROMPT = (
     "If the content lacks sufficient information to summarize, state this clearly in the output."
 )
 
-LLAMA_CLOUD_API_KEY = os.getenv("LLAMA_CLOUD_API_KEY")
+LLAMA_API_KEY = os.getenv("LLAMA_API_KEY")
