@@ -1,7 +1,7 @@
 import ollama
 from config.constants import MODEL, SYSTEM_PROMPT
 from models.website import Website
-from services.pdf_reader import PDFDocument
+from models.pdf_reader import PDFDocument
 import logging
 
 # Cấu hình logging

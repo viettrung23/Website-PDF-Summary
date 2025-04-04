@@ -1,47 +1,74 @@
+
 # Website & PDF Summary App
 
-Ứng dụng này cho phép người dùng tóm tắt nội dung chính từ một website hoặc file PDF bằng cách sử dụng API Ollama với mô hình `llama3.2`. Nó tự động loại bỏ các phần không cần thiết như menu điều hướng, quảng cáo, sidebar, footer và trả về bản tóm tắt ngắn gọn dưới dạng Markdown.
+## Tổng quan
 
-## Tính năng
-- Tóm tắt nội dung từ URL website.
-- Tóm tắt nội dung từ file PDF (bao gồm văn bản, bảng, và OCR cho PDF dạng ảnh).
-- Giao diện đơn giản với Streamlit.
-- Log chi tiết quá trình xử lý.
+Ứng dụng này cho phép người dùng tóm tắt nội dung chính từ các trang web hoặc file PDF một cách nhanh chóng và hiệu quả. Nó tập trung vào việc trích xuất thông tin cốt lõi, loại bỏ các phần không cần thiết như menu điều hướng, quảng cáo, hoặc chân trang, và trình bày kết quả dưới dạng Markdown rõ ràng, dễ đọc.
+
+### Tính năng chính
+- **Tóm tắt từ URL**: Nhập URL của một trang web để trích xuất và tóm tắt nội dung chính.
+- **Tóm tắt từ PDF**: Tải lên file PDF để phân tích và tóm tắt nội dung.
+- **Định dạng đầu ra**: Kết quả được trình bày dưới dạng Markdown, hỗ trợ bảng (Markdown table syntax) và công thức toán học (LaTeX notation).
+- **Loại bỏ nội dung không cần thiết**: Bỏ qua quảng cáo, menu, sidebar, footer để tập trung vào thông tin quan trọng.
+- **Giao diện thân thiện**: Sử dụng Streamlit để cung cấp giao diện người dùng đơn giản với hai tab riêng biệt cho website và PDF.
 
 ## Công nghệ sử dụng
-- **Python**: Ngôn ngữ chính.
-- **Streamlit**: Giao diện người dùng.
-- **Ollama**: API tóm tắt với mô hình `llama3.2`.
-- **BeautifulSoup**: Trích xuất nội dung website.
-- **pdfplumber & pdf2image**: Xử lý PDF.
-- **pytesseract**: OCR cho PDF dạng ảnh.
-- **requests**: Tải nội dung từ URL.
+- **Python**: Ngôn ngữ lập trình chính.
+- **Streamlit**: Framework để xây dựng giao diện web tương tác.
+- **BeautifulSoup**: Phân tích và trích xuất nội dung từ HTML của trang web.
+- **LlamaParse**: Công cụ trích xuất văn bản, bảng và công thức từ file PDF (sử dụng API từ Llama Cloud).
+- **Ollama**: Mô hình AI (`llama3.2`) để tóm tắt nội dung.
+- **Requests**: Gửi yêu cầu HTTP để tải nội dung trang web.
+- **Logging**: Theo dõi và ghi lại quá trình xử lý để debug và giám sát.
+- **python-dotenv**: Quản lý biến môi trường (ví dụ: API key).
 
-## Cấu hình
-- Python 3.8+
-- Git
-- Tesseract OCR (cho PDF dạng ảnh)
-- Poppler (cho `pdf2image`)
+## Yêu cầu hệ thống
+- Python 3.8 hoặc cao hơn.
+- Truy cập internet (để tải nội dung web và sử dụng API).
+- API key từ Llama Cloud (được lưu trong file `.env`).
 
 ## Hướng dẫn cài đặt
-1. **Clone repository**:
-   ```bash
-   git clone https://github.com/viettrung23/Website-PDF-Summary.git
-   cd Website-PDF-Summary
-2. **Tạo môi trường ảo**
-    ```bash
-    python -m venv venv
-    venv\Scripts\activate
-3. **Cài đặt thư viện**
-    ```bash
-    pip install -r requirements.txt
-4. **Cài đặt Tesseract OCR**
-- Tải [tesseract-ocr-w64-setup-5.5.0.20241111.exe](https://github.com/UB-Mannheim/tesseract/wiki) (64 bit)
-- Cài đặt biến môi trường
-5. **Cài đặt Poppler**
-- Tải [Release-24.08.0-0.zip](https://github.com/oschwartz10612/poppler-windows/releases)
-- Cài đặt biến môi trường
-6. **Thực thi code**
-    ```bash
-    streamlit run app.py
 
+### 1. Sao chép repository
+Clone repository về máy của bạn:
+```bash
+git clone https://github.com/viettrung23/Website-PDF-Summary.git
+cd Website-PDF-Summary
+```
+
+### 2. Cài đặt môi trường ảo (khuyến nghị)
+Tạo một môi trường ảo để cách ly các thư viện của dự án với hệ thống:
+```bash
+python -m venv venv
+```
+Kích hoạt môi trường ảo:
+- Trên Linux hoặc Mac:
+  ```bash
+  source venv/bin/activate
+  ```
+- Trên Windows:
+  ```bash
+  venv\Scripts\activate
+  ```
+Khi môi trường ảo được kích hoạt, bạn sẽ thấy `(venv)` xuất hiện trước dấu nhắc lệnh trong terminal.
+
+### 3. Cài đặt các thư viện cần thiết
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Cấu hình biến môi trường
+Tạo một file `.env` trong thư mục gốc của dự án và thêm API key của bạn:
+```
+LLAMA_CLOUD_API_KEY=<YOUR_API_KEY>
+```
+- Thay `<YOUR_API_KEY>` bằng khóa API thực tế từ Llama Cloud.
+- File `.env` sẽ được tự động đọc bởi `python-dotenv` khi ứng dụng khởi chạy.
+
+### 5. Chạy ứng dụng
+Khởi động ứng dụng bằng lệnh:
+```bash
+streamlit run app.py
+```
+- Sau khi chạy, Streamlit sẽ hiển thị URL (thường là `http://localhost:8501`).
+- Mở trình duyệt và truy cập URL này để sử dụng ứng dụng.
