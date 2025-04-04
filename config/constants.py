@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 MODEL = "llama3.2"
 
 SYSTEM_PROMPT = (
@@ -11,5 +16,4 @@ SYSTEM_PROMPT = (
     "If the content lacks sufficient information to summarize, state this clearly in the output."
 )
 
-# API key được khai báo trực tiếp (thay bằng key thật của bạn từ LlamaCloud)
-LLAMA_CLOUD_API_KEY = "llx-tQ6jFwXcCykLXKhc8puYnxJsFML1LOcH5adZ0kIWp5zHM8YP"
+LLAMA_CLOUD_API_KEY = os.getenv("LLAMA_CLOUD_API_KEY")
