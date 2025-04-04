@@ -22,11 +22,6 @@
 - **Logging**: Theo dõi và ghi lại quá trình xử lý để debug và giám sát.
 - **python-dotenv**: Quản lý biến môi trường (ví dụ: API key).
 
-## Yêu cầu hệ thống
-- Python 3.8 hoặc cao hơn.
-- Truy cập internet (để tải nội dung web và sử dụng API).
-- API key từ Llama Cloud (được lưu trong file `.env`).
-
 ## Hướng dẫn cài đặt
 
 ### 1. Sao chép repository

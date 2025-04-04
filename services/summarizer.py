@@ -4,6 +4,7 @@ from models.website import Website
 from models.pdf_reader import PDFDocument
 import logging
 
+# Thiết lập cấu hình logging
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',

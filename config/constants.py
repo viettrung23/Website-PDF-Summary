@@ -16,4 +16,5 @@ SYSTEM_PROMPT = (
     "If the content lacks sufficient information to summarize, state this clearly in the output."
 )
 
+# The API key for LlamaParse, loaded from environment variables
 LLAMA_API_KEY = os.getenv("LLAMA_API_KEY")

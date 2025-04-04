@@ -2,6 +2,7 @@ import streamlit as st
 from services.summarizer import summarize
 import logging
 
+# Thiết lập cấu hình logging    
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',

@@ -1,9 +1,10 @@
 from llama_parse import LlamaParse
-from config.constants import LLAMA_CLOUD_API_KEY
+from config.constants import LLAMA_API_KEY
 import logging
 import tempfile
 import os
 
+# Thiết lập cấu hình logging
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -33,7 +34,7 @@ class PDFDocument:
             # Khởi tạo LlamaParse
             logger.debug("Khởi tạo LlamaParse")
             parser = LlamaParse(
-                api_key=LLAMA_CLOUD_API_KEY,
+                api_key=LLAMA_API_KEY,
                 result_type="markdown",
                 parsing_instruction="Extract text, tables, and mathematical formulas where possible."
             )
